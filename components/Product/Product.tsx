@@ -2,7 +2,7 @@ import styles from './Product.module.css';
 import { ProductProps } from './Product.props';
 import cn from 'classnames';
 import { Button, Card, Divider, Rating, Tag } from '..';
-import { priceRu } from '../../helpers/helpers';
+import { declOfNum, priceRu } from '../../helpers/helpers';
 
 
 export const Product = ({ className, product, ...props }:ProductProps):JSX.Element => {
@@ -36,13 +36,20 @@ export const Product = ({ className, product, ...props }:ProductProps):JSX.Eleme
 				кредит
 			</div>
 			<div className={styles.reviewCount} > 
-				{ product.reviewCount } отзывов
+				{ product.reviewCount } {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
 			</div>
 			<Divider className={styles.hr} />
 			<div className={styles.description} > 
 				{ product.description }
 			</div>
 			<div className={styles.features} > 
+				{product.characteristics.map(c => (
+					<div key={c.name} className={styles.characteristic} >
+						<span className={styles.characteristicName}> { c.name } </span>
+						<span className={styles.characteristicDots}> </span>
+						<span className={styles.characteristicValue}> { c.value } </span>
+					</div>
+				))}
 			</div>
 			<div className={styles.advBlock} > 
 				<div className={styles.advantages}> 
