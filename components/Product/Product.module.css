@@ -20,6 +20,7 @@
 
 .price , .priceTitle { 
 	grid-column: pricestart / priceend;
+	white-space: nowrap;
 }
 
 .credit, .creditTitle {
@@ -143,6 +144,143 @@
 	margin-bottom: 8px;
 }
 
+@media screen and (max-width: 1320px) {
+	.product {
+		grid-template-columns: 70px 30px auto 40px auto 40px 1fr;
+		grid-template-areas: 
+		"logo . title title title title title"
+		"logo . tags tags tags tags tags"
+		"price price price . credit . rating"
+		"priceTitle priceTitle priceTitle . creditTitle . ratingTitle"
+		"hr hr hr hr hr hr hr"
+		"description description description description description description description"
+		"features features features features features features features"
+		"advBlock advBlock advBlock advBlock advBlock advBlock advBlock"
+		"hr2 hr2 hr2 hr2 hr2 hr2 hr2"
+		"actions actions actions actions actions actions actions"
+		;
+	}
+
+	.logo {
+		grid-area: logo;
+	}
+
+	.title {
+		grid-area: title;
+	}
+
+	.text {
+		grid-area: text;
+	}
+
+	.price {
+		grid-area: price;
+	}
+
+	.tags {
+		grid-area: tags;
+	}
+
+	.credit {
+		grid-area: credit;
+	}
+
+	.rating {
+		grid-area: rating;
+	}
+
+	.priceTitle {
+		grid-area: priceTitle;
+	}
+
+	.creditTitle {
+		grid-area: creditTitle;
+	}
+
+	.reviewCount {
+		grid-area: ratingTitle;
+	}
+
+	.hr {
+		grid-area: hr;
+	}
+
+	.description {
+		grid-area: description;
+	}
+
+	.features {
+		grid-area: features;
+	}
+
+	.advBlock {
+		grid-area: advBlock;
+	}
+
+	.hr2 {
+		grid-area: hr2;
+	}
+
+	.actions {
+		grid-area: actions;
+	}
+
+	.logo,
+	.features, .tags {
+		margin-bottom: 20px;
+	}
+
+}
 
 
+@media screen and (max-width: 640px) {
+	.product {
+		grid-template-columns: 70px 30px 1fr;
+		grid-template-areas:
+			"logo . title"
+			"logo . tags"
+			"priceTitle priceTitle price"
+			"creditTitle creditTitle credit"
+			"ratingTitle ratingTitle rating"
+			"hr hr hr"
+			"description description description "
+			"features features features"
+			"advBlock advBlock advBlock"
+			"hr2 hr2 hr2"
+			"actions actions actions"
+		;
+	}
 
+	.price, .credit, .rating, .tags {
+		margin-bottom: 10px;
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+	.product {
+		grid-template-columns: 1fr;
+		grid-template-areas:
+			"logo"
+			"title"
+			"tags"
+			"price"
+			"priceTitle"
+			"credit"
+			"creditTitle"
+			"rating"
+			"ratingTitle"
+			"hr"
+			"description"
+			"features"
+			"advBlock"
+			"hr2"
+			"actions"
+		;
+	}
+
+	.title {
+		margin-bottom: 10px;
+	}
+
+}
