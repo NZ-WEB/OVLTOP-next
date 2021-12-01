@@ -5,12 +5,14 @@ import { spawn } from 'child_process';
 import ArrowIcon from './Vector.svg';
 
 
-export const Button = ({ appearance, arrow = 'none', children, className, ...props }:ButtonProps):JSX.Element => {
+export const Button = ({ appearance, disabled, arrow = 'none', children, className, ...props }:ButtonProps):JSX.Element => {
 	return (
 		<button
+			disabled={ disabled ? true : false }
 			className={cn(styles.button, className, {
 				[styles.primary]: appearance == 'primary',
-				[styles.ghost]: appearance == 'ghost'
+				[styles.ghost]: appearance == 'ghost',
+				[styles.disabled]: disabled
 			})}
 			{...props}
 		>
