@@ -8,9 +8,11 @@ import { Advantage } from '../../components/Advantages/Advantage';
 import pages from '../../pages';
 import { SortEnum } from '../../components/Sort/Sort.props';
 import { sortReducer } from './sort.reducer';
+import { useScrollY } from '../../hooks/useScrollY';
 
 export const TopPageComponent = ({ page, products, firstCategory, ...props }:TopPageComponentProps):JSX.Element => {
 	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });	
+	const y = useScrollY()
 	
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
@@ -29,8 +31,7 @@ export const TopPageComponent = ({ page, products, firstCategory, ...props }:Top
 			</div>
 			<div>
 				<Card color="blue">
-				{sortedProducts && sortedProducts.map(p => (<Product key={p._id} product={p} /> ))}
-					
+				{sortedProducts && sortedProducts.map(p => (<Product layout key={p._id} product={p} /> ))}
 				</Card>
 			</div>
 			<div className={styles.hhTitle}>

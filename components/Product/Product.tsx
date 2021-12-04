@@ -4,9 +4,10 @@ import cn from 'classnames';
 import { Button, Card, Divider, Rating, ReviewForm, Tag, Review } from '..';
 import { declOfNum, priceRu } from '../../helpers/helpers';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useRef, useState } from 'react';
+import { motion } from 'framer-motion';
 
-export const Product = ({ className, product, ...props }:ProductProps):JSX.Element => {
+export const Product = motion(forwardRef(({ className, product, ...props }:ProductProps, ref: ForwardedRef<HTMLDivElement>):JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
 	const reviewRef = useRef<HTMLDivElement>(null);
 
@@ -19,7 +20,7 @@ export const Product = ({ className, product, ...props }:ProductProps):JSX.Eleme
 	};
 
 	return (
-		<div  {...props}>
+		<div ref={ref}  {...props}>
 			<Card className={styles.product} {...props}>
 				<div className={styles.logo} >
 					<Image 
@@ -104,4 +105,4 @@ export const Product = ({ className, product, ...props }:ProductProps):JSX.Eleme
 			</Card>
 		</div>
 	);
-};
+}));
