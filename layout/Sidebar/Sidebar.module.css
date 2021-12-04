@@ -3,3 +3,12 @@
 	align-content: start;
 	gap: 20px;
 }
+
+.logo {
+	cursor: pointer;
+	transition: all 0.2s ease;
+}
+
+.logo:hover {
+	transform: scale(1.03);
+}
