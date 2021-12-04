@@ -4,13 +4,22 @@ import cn from 'classnames';
 import { Button, Card, Divider, Rating, ReviewForm, Tag, Review } from '..';
 import { declOfNum, priceRu } from '../../helpers/helpers';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export const Product = ({ className, product, ...props }:ProductProps):JSX.Element => {
 	const [isReviewOpened, setIsReviewOpened] = useState<boolean>(false);
-	
+	const reviewRef = useRef<HTMLDivElement>(null);
+
+	const scrollToReview = () => {
+		setIsReviewOpened(true);
+		reviewRef.current.scrollIntoView({
+			behavior: 'smooth',
+			block: 'start'
+		});
+	};
+
 	return (
-		<>
+		<div  {...props}>
 			<Card className={styles.product} {...props}>
 				<div className={styles.logo} >
 					<Image 
@@ -45,7 +54,9 @@ export const Product = ({ className, product, ...props }:ProductProps):JSX.Eleme
 					кредит
 				</div>
 				<div className={styles.reviewCount} > 
-					{ product.reviewCount } {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
+					<a href="#ref" onClick={() => scrollToReview()}>
+						{ product.reviewCount } {declOfNum(product.reviewCount, ['отзыв','отзыва','отзывов'])}
+					</a>
 				</div>
 				<Divider className={styles.hr} />
 				<div className={styles.description} > 
@@ -80,7 +91,7 @@ export const Product = ({ className, product, ...props }:ProductProps):JSX.Eleme
 			<Card color='blue' className={cn(styles.reviews, {
 				[styles.opened]: isReviewOpened,
 				[styles.closed]: !isReviewOpened,
-			})}>
+			})} ref={reviewRef} >
 				{
 					product.reviews && product.reviews.map(r => (
 						<div key={ r._id }>
@@ -91,6 +102,6 @@ export const Product = ({ className, product, ...props }:ProductProps):JSX.Eleme
 				}
 				<ReviewForm productId={product._id} />
 			</Card>
-		</>
+		</div>
 	);
 };

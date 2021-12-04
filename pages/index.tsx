@@ -1,61 +1,38 @@
 import { GetStaticProps } from 'next';
-import { useEffect, useState } from 'react';
-import { Htag, Button, P, Tag, Rating, Input, Textarea } from '../components';
+import React, { useState } from 'react';
+import { Button, Htag, Input, P, Rating, Tag, Textarea } from '../components';
 import { withLayout } from '../layout/Layout';
 import axios from 'axios';
 import { MenuItem } from '../interfaces/menu.interface';
+import { API } from '../helpers/api';
 
-function Home({ menu }:HomeProps): JSX.Element {
-	const [counter, setCounter] = useState<number>(0);
-
+function Home({ menu }: HomeProps): JSX.Element {
 	const [rating, setRating] = useState<number>(4);
 
-	useEffect(() => {
-		console.log(counter, 'counter');
-		return () => {
-			console.log('unmount');
-		}
-	});
-
-  return (
-    <>
-      <Htag tag="h1">{counter}</Htag>
-	  <Button arrow="right" appearance="primary" className="123" onClick={() => setCounter(x => x + 1)}>Кнопка</Button>
-	  <Button appearance="ghost">Кнопка</Button>
-	  <Button arrow="down" appearance="ghost">Кнопка</Button>
-	  <P size="sm">
-		  1
-	  </P>
-	  <P size="md">
-		  1
-	  </P>
-	  <P size="xl">
-		  1
-	  </P>
-	  <P>
-		  2
-	  </P>
-
-	  <Tag color="gray" size="md" href="vk.com">123</Tag>
-	  <Tag color="red" size="sm" href="vk.com">123</Tag>
-	  <Tag color="primary" size="sm"  href="vk.com">123</Tag>
-	  <Rating rating={rating} isEditable setRating={setRating}/>
-	  <ul>
-	  	{menu.map(m => (<li key={m._id.secondCategory} >{m._id.secondCategory}</li>))}
-	  </ul>
-
-	  <Input />
-	  <Textarea/>
-	  
-    </>
-  );
+	return (
+		<>
+			<Htag tag='h1'>Заголовок</Htag>
+			<Button appearance='primary' arrow='right'>Кнопка</Button>
+			<Button appearance='ghost' arrow='down'>Кнопка</Button>
+			<P size='l'>Большой</P>
+			<P>Средний</P>
+			<P size='s'>Маленький</P>
+			<Tag size='s'>Ghost</Tag>
+			<Tag size='m' color='red'>Red</Tag>
+			<Tag size='s' color='green'>Green</Tag>
+			<Tag color='primary'>Green</Tag>
+			<Rating rating={rating} isEditable setRating={setRating} />
+			<Input placeholder='тест' />
+			<Textarea placeholder='тест area' />
+		</>
+	);
 }
 
 export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-	const firstCategory = 0; 
-	const { data: menu } =  await axios.post<MenuItem[]>( process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find', {
+	const firstCategory = 0;
+	const { data: menu } = await axios.post<MenuItem[]>(API.topPage.find, {
 		firstCategory
 	});
 	return {
@@ -64,7 +41,7 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 			firstCategory
 		}
 	};
-}
+};
 
 interface HomeProps extends Record<string, unknown> {
 	menu: MenuItem[];

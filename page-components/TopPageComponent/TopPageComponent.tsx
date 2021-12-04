@@ -2,7 +2,7 @@ import styles from './TopPageComponent.module.css';
 import cn from 'classnames';
 import { TopPageComponentProps } from './TopPageComponent.props';
 import { Card, HhData, Htag, P, Product, Sort, Tag } from '../../components';
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { TopLevelCategory } from '../../interfaces/page.interface';
 import { Advantage } from '../../components/Advantages/Advantage';
 import pages from '../../pages';
@@ -15,6 +15,10 @@ export const TopPageComponent = ({ page, products, firstCategory, ...props }:Top
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
 	};
+
+	useEffect(() => {
+		dispathSort({ type: 'reset', initialState: products });
+	}, [products]);
 
 	return (
 		<div className={styles.wrapper}>
