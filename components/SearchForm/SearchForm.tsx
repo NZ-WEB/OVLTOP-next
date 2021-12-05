@@ -35,6 +35,7 @@ export default function SearchForm({ className, ...props }:SearchFormProps) {
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 				onKeyDown={() => handleKeyDown}
+				aria-label="Искать по сайту"
 			/>
 			<ButtonIcon
 				appearance="primary"

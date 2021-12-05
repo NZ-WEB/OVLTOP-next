@@ -6,6 +6,7 @@ import cn from 'classnames';
 export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Element => {
 	return (
 		<div className={cn(styles.sort, className)} {...props}>
+			<div className={styles.sortName} id="sort" >Сортировка</div>
 			<div
 				id="rating"
 				onClick={() => setSort(SortEnum.Rating)}

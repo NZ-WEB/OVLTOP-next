@@ -20,6 +20,11 @@
 	margin-left: 15px;
 }
 
+.close {
+	border: none;
+	background: transparent;
+}
+
 .rating {
 	display: grid;
 	grid-template-columns: auto 1fr;

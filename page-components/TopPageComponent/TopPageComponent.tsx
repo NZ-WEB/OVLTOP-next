@@ -9,11 +9,14 @@ import pages from '../../pages';
 import { SortEnum } from '../../components/Sort/Sort.props';
 import { sortReducer } from './sort.reducer';
 import { useScrollY } from '../../hooks/useScrollY';
+import {useReducedMotion} from "framer-motion";
 
 export const TopPageComponent = ({ page, products, firstCategory, ...props }:TopPageComponentProps):JSX.Element => {
-	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });	
+	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
 	const y = useScrollY()
-	
+
+	const shouldReduceMotion = useReducedMotion();
+
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
 	};
@@ -26,12 +29,20 @@ export const TopPageComponent = ({ page, products, firstCategory, ...props }:Top
 		<div className={styles.wrapper}>
 			<div className={styles.title}>
 				<Htag tag="h1" >{ page.title }</Htag>
-				{ products && <Tag color="gray" size="md" >{ products.length }</Tag> }
+				{ products &&
+				<Tag
+					color="gray"
+					size="md"
+					aria-label={products.length + 'элементов'}
+				>{ products.length }</Tag> }
 				<Sort sort={sort} setSort={setSort} />
 			</div>
-			<div>
+			<div role="list">
 				<Card color="blue">
-				{sortedProducts && sortedProducts.map(p => (<Product layout key={p._id} product={p} /> ))}
+				{
+					sortedProducts && sortedProducts
+						.map(p => (<Product layout key={p._id} layout={shouldReduceMotion ? false : true} product={p} /> ))
+				}
 				</Card>
 			</div>
 			<div className={styles.hhTitle}>
@@ -57,15 +68,15 @@ export const TopPageComponent = ({ page, products, firstCategory, ...props }:Top
 					Получаемые навыки
 				</Htag>
 				<div className={styles.skillsWrapper}>
-					{ 
+					{
 						page.tags && page.tags.map(t => (
 							<Tag className={styles.skillsItem} key={t} size="sm" color="primary">
 								{ t }
 							</Tag>
-						)) 
+						))
 					}
 				</div>
-				
+
 			</div>
 		</div>
 	);

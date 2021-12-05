@@ -29,6 +29,10 @@
 	gap: 0 8px;
 }
 
+.sortName {
+	display: none;
+}
+
 .sort span:not(.active) {
 	grid-template-columns: 1fr ;
 }
