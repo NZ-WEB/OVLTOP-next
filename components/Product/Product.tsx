@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { Button, Card, Divider, Rating, ReviewForm, Tag, Review } from '..';
 import { declOfNum, priceRu } from '../../helpers/helpers';
 import Image from 'next/image';
-import { ForwardedRef, forwardRef, useRef, useState } from 'react';
+import { ForwardedRef, forwardRef, useRef, useState, KeyboardEvent } from 'react';
 import { motion } from 'framer-motion';
 
 // eslint-disable-next-line react/display-name
@@ -23,6 +23,7 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 			behavior: 'smooth',
 			block: 'start'
 		});
+		reviewRef.current?.focus();
 	};
 
 	const getCurrentReviewsCount = (product) => {
@@ -33,7 +34,10 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 
 	return (
 		<div ref={ref}  {...props}>
-			<Card className={styles.product} {...props}>
+			<Card
+				className={styles.product}
+				{...props}
+			>
 				<div className={styles.logo} >
 					<Image
 						src={process.env.NEXT_PUBLIC_DOMAIN + product.image}
@@ -67,7 +71,13 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 					кредит
 				</div>
 				<div className={styles.reviewCount} >
-					<a href="#ref" onClick={() => scrollToReview()}>
+					<a
+						href="#ref"
+						onClick={() => scrollToReview()}
+						onKeyDown={(key: KeyboardEvent) =>
+							key.code === 'Space' || key.code === 'Enter' ? scrollToReview() : null
+						}
+					>
 						{ getCurrentReviewsCount(product) }
 					</a>
 				</div>
@@ -97,11 +107,21 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 				</div>
 				<Divider className={cn(styles.hr, styles.hr2)} />
 				<div className={styles.actions} >
-					<Button appearance="primary" >Узнать подробнее</Button>
-					<Button disabled={product.reviews.length === 0 ? true : false} appearance="ghost" arrow={isReviewOpened ? 'down' : 'right'} className={styles.reviewButton} onClick={() => setIsReviewOpened(!isReviewOpened)} >Читать отзывы</Button>
+					<Button appearance="primary"  >Узнать подробнее</Button>
+					<Button
+						disabled={product.reviews.length === 0 ? true : false}
+						appearance="ghost" arrow={isReviewOpened ? 'down' : 'right'}
+						className={styles.reviewButton} onClick={
+							() => setIsReviewOpened(!isReviewOpened)
+						}
+					>Читать отзывы</Button>
 				</div>
 			</Card>
-			<motion.div animate={isReviewOpened ? 'visible' : 'hidden'} variants={variants} initial="hidden">
+			<motion.div
+				animate={isReviewOpened ? 'visible' : 'hidden'}
+				variants={variants}
+				initial="hidden"
+			>
 				<Card
 					color='blue'
 					className={cn(styles.reviews, {
@@ -109,6 +129,7 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 						[styles.closed]: !isReviewOpened,
 					})}
 					ref={reviewRef}
+					tabIndex={isReviewOpened ? 0 : -1}
 				>
 					{
 						product.reviews && product.reviews.map(r => (
@@ -118,7 +139,7 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 							</div>
 						))
 					}
-					<ReviewForm productId={product._id} />
+					<ReviewForm isOpened={isReviewOpened} productId={product._id} />
 				</Card>
 			</motion.div>
 		</div>

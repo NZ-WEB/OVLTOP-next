@@ -34,7 +34,7 @@ export default function SearchForm({ className, ...props }:SearchFormProps) {
 				placeholder="Поиск..."
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
-				onKeyDown={handleKeyDown}
+				onKeyDown={() => handleKeyDown}
 			/>
 			<ButtonIcon
 				appearance="primary"

@@ -1,4 +1,4 @@
-import { SortEnum, SortProps } from './Sort.props';
+import {SortEnum, SortProps} from './Sort.props';
 import styles from './Sort.module.css';
 import SortIcon from './sort.svg';
 import cn from 'classnames';
@@ -14,6 +14,8 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Ele
 				})}
 				aria-selected={sort == SortEnum.Rating}
 				aria-labelledby="sort rating"
+				tabIndex={0}
+				onKeyDown={() => setSort(SortEnum.Rating)}
 			>
 				<SortIcon className={styles.sortIcon} />По&nbsp;рейтингу
 			</div>
@@ -25,6 +27,8 @@ export const Sort = ({ sort, setSort, className, ...props }: SortProps): JSX.Ele
 				})}
 				aria-selected={sort == SortEnum.Price}
 				aria-labelledby="sort price"
+				tabIndex={0}
+				onKeyDown={() => setSort(SortEnum.Price)}
 			>
 				<SortIcon className={styles.sortIcon} />По&nbsp;цене
 			</div>

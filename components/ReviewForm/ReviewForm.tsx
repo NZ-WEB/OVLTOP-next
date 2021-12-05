@@ -10,7 +10,7 @@ import { API } from '../../helpers/api';
 import { useState } from 'react';
 
 
-export const ReviewForm = ({ productId ,className, ...props }:ReviewFormProps):JSX.Element => {
+export const ReviewForm = ({ productId, isOpened, className, ...props }:ReviewFormProps):JSX.Element => {
 	const { register, control, handleSubmit, formState: { errors }, reset } = useForm<IReviewForm>();
 	const [isSuccess, setIsSuccess] = useState<boolean>(false);
 	const [error, setError] = useState<string>(undefined);
@@ -32,20 +32,22 @@ export const ReviewForm = ({ productId ,className, ...props }:ReviewFormProps):J
 
 	return (
 		<form onSubmit={handleSubmit(onSubmit)}>
-			<div 
-				className={cn(styles.reviewForm, className)} 
+			<div
+				className={cn(styles.reviewForm, className)}
 				{...props}
 			>
-				<Input 
-					{...register('name', { required: { value: true, message: 'Заполните имя' } })} 
-					placeholder="Имя" 
+				<Input
+					{...register('name', { required: { value: true, message: 'Заполните имя' } })}
+					placeholder="Имя"
 					error={errors.name}
+					tabIndex={isOpened ? 0 : -1}
 				/>
-				<Input 
-					{...register('title', { required: {value: true, message: 'Заполните заголовок'} })} 
-					placeholder="Заголовок отзыва" 
-					className={styles.title} 
+				<Input
+					{...register('title', { required: {value: true, message: 'Заполните заголовок'} })}
+					placeholder="Заголовок отзыва"
+					className={styles.title}
 					error={errors.title}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={styles.rating}>
 					<span>Оценка:</span>
@@ -54,18 +56,25 @@ export const ReviewForm = ({ productId ,className, ...props }:ReviewFormProps):J
 						name="rating"
 						rules={{ required: {value: true, message: 'Обязательное поле'}}}
 						render={({ field }) => {
-							return <Rating error={errors.rating} isEditable setRating={field.onChange} rating={field.value} />
+							return <Rating
+								error={errors.rating}
+								isEditable
+								setRating={field.onChange}
+								rating={field.value}
+								tabIndex={isOpened ? 0 : -1}
+							/>
 						}}
 					/>
 				</div>
-				<Textarea 
-					{...register('description', { required: {value: true, message: 'Заполните описание'}})} 
-					placeholder="Текст отзыва" 
-					className={styles.description} 
+				<Textarea
+					{...register('description', { required: {value: true, message: 'Заполните описание'}})}
+					placeholder="Текст отзыва"
+					className={styles.description}
 					error={errors.description}
+					tabIndex={isOpened ? 0 : -1}
 				/>
 				<div className={styles.submit} >
-					<Button appearance="primary">
+					<Button tabIndex={isOpened ? 0 : 1} appearance="primary">
 						Отправить
 					</Button>
 					<span>
@@ -78,16 +87,16 @@ export const ReviewForm = ({ productId ,className, ...props }:ReviewFormProps):J
 				<div className={styles.successDescription} >
 					Спасибо за ваш отзыв! После проверки модератора, он разместится здесь.
 				</div>
-				<CloseIcon 
-					className={styles.close} 
+				<CloseIcon
+					className={styles.close}
 					onClick={() => setIsSuccess(false)}
 				/>
 			</div>}
 
 			{error && <div className={cn(styles.error, styles.panel)}>
 				Что-то пошло не так, попробуйте обновить страницу
-				<CloseIcon 
-					className={styles.close} 
+				<CloseIcon
+					className={styles.close}
 					onClick={() => setError(undefined)}
 				/>
 			</div>}
