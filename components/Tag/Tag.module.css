@@ -1,54 +1,51 @@
 .tag {
-	display: inline-block;
-	box-sizing: border-box;
-	margin-right: 5px;
-	border-radius: 20px;
+  display: inline-block;
+  box-sizing: border-box;
+  margin-right: 5px;
+  border-radius: 20px;
 }
 
 .sm {
-	padding: 5px 11px;
-
-	font-size: 12px;
-	line-height: 12px;
+  padding: 5px 11px;
+  font-size: 12px;
+  line-height: 12px;
 }
 
 .md {
-	padding: 5px 11px;
-
-	font-size: 14px;
-	line-height: 14px;
+  padding: 5px 11px;
+  font-size: 14px;
+  line-height: 14px;
 }
 
 .ghost {
-	border: 1px solid var(--gray-light);
-	background: transparent;
+  border: 1px solid var(--gray-light);
+  background: transparent;
 }
 
 .red {
-	color: var(--white);
-	border: 1px solid var(--red);
-	background: var(--red);
-	font-weight: bold;
+  color: var(--white);
+  border: 1px solid var(--red);
+  background: var(--red);
+  font-weight: bold;
 }
 
 .gray {
-	color: var(--white);
-	border: 1px solid var(--gray);
-	background: var(--gray);
-	font-weight: bold;
+  color: var(--white);
+  border: 1px solid var(--gray);
+  background: var(--gray);
+  font-weight: bold;
 }
 
 .green {
-	color: var(--green);
-	border: 1px solid var(--green-light);
-	background: var(--green-light);
-	font-weight: bold;
+  color: var(--green);
+  border: 1px solid var(--green-light);
+  background: var(--green-light);
+  font-weight: bold;
 }
 
 .primary {
-	color: var(--primary);
-
-	background: transparent;
-	border: 1px solid var(--primary);
-	font-weight: bold;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  background: transparent;
+  font-weight: bold;
 }

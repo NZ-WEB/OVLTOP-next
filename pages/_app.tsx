@@ -4,13 +4,14 @@ import React from 'react';
 import '../styles/globals.css';
 import { YMInitializer } from 'react-yandex-metrika';
 import ym from 'react-yandex-metrika';
+import {Router} from "next/router";
 
 function MyApp({Component, pageProps, router}: AppProps): JSX.Element {
-    router.events.on('routeChangeComplete', (url: string) => {
-		if (typeof window !== 'undefined') {
-			ym('hit', url);
-		}
-	});
+    Router.events.on('routeChangeComplete', (url: string) => {
+        if (typeof window !== 'undefined') {
+            ym('hit', url);
+        }
+    });
 
     return (
         <>
@@ -19,7 +20,7 @@ function MyApp({Component, pageProps, router}: AppProps): JSX.Element {
                 <link key={1} rel="icon" href="/favicon.ico"/>
                 <link rel="preconnect" href="https://fonts.googleapis.com"/>
                 <link rel="preconnect" href="https://mc.yandex.ru"/>
-                <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+                <link rel="preconnect" href="https://fonts.gstatic.com"/>
                 <link
                     href="https://fonts.googleapis.com/css2?family=Noto+Sans+Display:wght@300;400;500;700&display=swap"
                     rel="stylesheet"/>

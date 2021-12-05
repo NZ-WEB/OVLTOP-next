@@ -33,10 +33,9 @@ export const Product = motion(forwardRef(({ className, product, ...props }:Produ
 	};
 
 	return (
-		<div ref={ref}  {...props}>
+		<div className={className} {...props} ref={ref}>
 			<Card
 				className={styles.product}
-				{...props}
 			>
 				<div className={styles.logo} >
 					<Image

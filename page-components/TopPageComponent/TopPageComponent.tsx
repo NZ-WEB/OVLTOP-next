@@ -41,7 +41,7 @@ export const TopPageComponent = ({ page, products, firstCategory, ...props }:Top
 				<Card color="blue">
 				{
 					sortedProducts && sortedProducts
-						.map(p => (<Product layout key={p._id} layout={shouldReduceMotion ? false : true} product={p} /> ))
+						.map(p => (<Product key={p._id} layout={shouldReduceMotion ? false : true} product={p} /> ))
 				}
 				</Card>
 			</div>

@@ -1,25 +1,28 @@
 .p {
-	font-size: 16px;
-	margin: 0;
+  margin: 0;
+  font-size: 16px;
 }
+
 .sm {
-	font-weight: normal;
-	font-size: 14px;
-	line-height: 24px;
-	color: var(--black);
-	margin: 0;
+  margin: 0;
+  color: var(--black);
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 24px;
 }
+
 .md {
-	font-weight: normal;
-	font-size: 16px;
-	line-height: 24px;
-	color: var(--black);
-	margin: 0;
+  margin: 0;
+  color: var(--black);
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
 }
+
 .xl {
-	font-weight: normal;
-	font-size: 18px;
-	line-height: 29px;
-	color: var(--black);
-	margin: 0;
+  margin: 0;
+  color: var(--black);
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 29px;
 }

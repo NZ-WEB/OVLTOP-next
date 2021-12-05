@@ -1,25 +1,25 @@
 .search {
-	position: relative;
-	width: 100%;
+  position: relative;
+  width: 100%;
 }
 
 .input input {
-	width: 100%;
+  width: 100%;
 }
 
 .button {
-	position: absolute;
-	top: 50%;
-	right: 3px;
-	transform: translateY(-50%);
-	width: 30px;
-	height: 30px;
-	padding: 6px;
-	background: var(--primary);
-	border:none;
-	outline: var(--primary-hover);
+  position: absolute;
+  top: 50%;
+  right: 3px;
+  width: 30px;
+  height: 30px;
+  padding: 6px;
+  transform: translateY(-50%);
+  border: none;
+  outline: var(--primary-hover);
+  background: var(--primary);
 }
 
 .button:hover {
-	background: var(--primary-hover);
+  background: var(--primary-hover);
 }

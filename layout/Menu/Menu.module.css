@@ -1,95 +1,79 @@
 .firstLevel {
-	display: grid;
-	align-items: center;
-
-	margin-top: 20px;
-
-	font-size: 18px;
-	font-weight: 500;
-	line-height: 25px;
-	grid-template-columns: 24px 1fr;
-	gap: 20px;
-	list-style: none;
+  display: grid;
+  align-items: center;
+  margin-top: 20px;
+  list-style: none;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 25px;
+  grid-template-columns: 24px 1fr;
+  gap: 20px;
 }
 
 .firstLevel:first-child {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .firstLevelList {
-	padding: 0;
-
-	list-style: none;
+  padding: 0;
+  list-style: none;
 }
 
 .firstLevelActive,
 .firstLevel:hover {
-	color: var(--primary);
+  color: var(--primary);
 }
 
 .firstLevelActive svg,
 .firstLevel:hover svg {
-	fill: var(--primary);
+  fill: var(--primary);
 }
 
 .secondLevel {
-	margin-bottom: 10px;
-	padding: 0;
-	list-style: none;
-
-	cursor: pointer;
-	text-transform: uppercase;
-
-	color: var(--gray-dark);
-	border: none;
-
-	background: none;
-
-	font-size: 12px;
-
-	font-weight: 300;
+  margin-bottom: 10px;
+  padding: 0;
+  list-style: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: var(--gray-dark);
+  border: none;
+  background: none;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 .secondBlock {
-	margin-top: 15px;
-	margin-left: 12px;
-	padding: 0 0 0 32px;
-
-	list-style: none;
-
-	border-left: 1px solid #DFDFDF;
+  margin-top: 15px;
+  margin-left: 12px;
+  padding: 0 0 0 32px;
+  list-style: none;
+  border-left: 1px solid #dfdfdf;
 }
 
 .secondLevelBlock {
-	overflow: hidden;
-
-	padding: 0;
-
-	list-style: none;
+  overflow: hidden;
+  padding: 0;
+  list-style: none;
 }
 
 .visuallyHidden {
-	display: none;
+  display: none;
 }
 
 .thirdLevel {
-	display: block;
-
-	margin-bottom: 10px;
-
-	cursor: pointer;
-
-	color: var(--gray-dark);
-	outline-offset: -1px;
-
-	font-size: 14px!important;
-	font-weight: 500!important;
-	outline-offset: -1px;
-	outline-color: var(--primary);
-	list-style: none;
+  display: block;
+  margin-bottom: 10px;
+  list-style: none;
+  cursor: pointer;
+  color: var(--gray-dark);
+  outline-color: var(--primary);
+  outline-offset: -1px;
+  outline-offset: -1px;
+  font-size: 14px !important;
+  font-weight: 500 !important;
 }
 
 .thirdLevelActive,
 .thirdLevel:hover {
-	color: var(--primary);
+  color: var(--primary);
 }

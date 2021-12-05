@@ -1,0 +1,5 @@
+.popularList {
+    color: var(--primary);
+    margin: 10px 0;
+    cursor: pointer;
+}
