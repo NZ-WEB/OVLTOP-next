@@ -7,6 +7,11 @@ body {
 
 	font-family: 'Noto Sans Display',
 	sans-serif;
+
+}
+
+a, button, div {
+	outline-color: var(--primary);
 }
 
 a {
@@ -25,7 +30,7 @@ a {
 	--gray-light: #ebebeb;
 	--gray-dark: #787d85;
 	--gray: #A4A4A4;
-	--primary: #7653FC;
+	--primary: #5e37f8;
 	--primary-hover: #502ddb;
 	--red: #DE0000;
 	--red-light: #FC836D;

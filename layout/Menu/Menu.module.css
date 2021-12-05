@@ -79,6 +79,8 @@
 
 	font-size: 14px!important;
 	font-weight: 500!important;
+	outline-offset: -1px;
+	outline-color: var(--primary);
 }
 
 .thirdLevelActive,

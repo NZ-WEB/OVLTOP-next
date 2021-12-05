@@ -33,8 +33,8 @@
 
 .gray {
 	color: var(--white);
-	border: 1px solid var(--gray-light);
-	background: var(--gray-light);
+	border: 1px solid var(--gray);
+	background: var(--gray);
 	font-weight: bold;
 }
 

@@ -15,4 +15,11 @@
 	width: 30px;
 	height: 30px;
 	padding: 6px;
+	background: var(--primary);
+	border:none;
+	outline: var(--primary-hover);
+}
+
+.button:hover {
+	background: var(--primary-hover);
 }

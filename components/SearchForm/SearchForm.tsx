@@ -3,12 +3,12 @@ import SearchIcon from './search.svg';
 import Link from 'next/link';
 import { SearchFormProps } from './SearchForm.props';
 import cn from 'classnames';
-import { Button, Input } from '..';
+import {Button, ButtonIcon, Input} from '..';
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 export default function SearchForm({ className, ...props }:SearchFormProps) {
-	
+
 	const [search, setSearch] = useState<string>('');
 	const router = useRouter();
 
@@ -29,20 +29,20 @@ export default function SearchForm({ className, ...props }:SearchFormProps) {
 
 	return (
 		<div className={cn(className, styles.search)} {...props} >
-			<Input 
+			<Input
 				className={styles.input}
 				placeholder="Поиск..."
 				value={search}
 				onChange={(e) => setSearch(e.target.value)}
 				onKeyDown={handleKeyDown}
 			/>
-			<Button 
-				appearance="primary" 
+			<ButtonIcon
+				appearance="primary"
 				className={styles.button}
 				onClick={() => GoToSearch()}
+				icon={<SearchIcon/>}
 			>
-				<SearchIcon />
-			</Button>
+			</ButtonIcon>
 		</div>
 	);
 }
